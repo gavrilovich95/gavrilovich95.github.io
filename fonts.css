@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'DINPro Bold';
+    src: url(fonts/DINPro-Bold.ttf);
+ }
+
+ @font-face {
+    font-family: 'DINPro Regular';
+    src: url(fonts/DINPro-Regular.ttf);
+ }
+
+ @font-face {
+    font-family: 'DINPro Medium';
+    src: url(fonts/DINPro-Medium.ttf);
+ }
+
+ @font-face {
+ 	font-family: 'Molot Regular';
+ 	src: url(fonts/Molot.ttf);
+ }

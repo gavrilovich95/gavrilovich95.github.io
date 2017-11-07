@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Багровый песок</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="fonts.css">
+	<script src="jquery-3.2.1.js"></script>
+	<script src="js.js"></script>
+	<script src="parallax.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="jquery.parallax.css" />
+</head>
+<body>
+	<div class="overlay"></div>
+		<!-- Задать вопрос -->
+		<div class="form__wrapper form__question-wrapper">
+			<header class="form__header">
+				<h3>Задать вопрос</h3>
+				<i class="form__close"></i>
+			</header>
+			<form action="mail.php" method="POST" class="form">
+				<label for="name" class="form__label">Представьтесь</label>
+				<input type="text" id="name" name="fio">
+				<label for="email" class="form__label">Адрес электронной почты</label>
+				<input type="email" id="email" name="email" required>
+				<label for="question" class="form__label">Вопрос авторам книги</label>
+				<textarea id="question" name="question" class="form__textarea"></textarea>
+				<p class="form__example">Например: Укажите информацию по доставке</p>
+				<label for="phone" class="form__label form__toggler"><span class="form__label_text-style">Добавить контактный телефон</span></label>
+				<div class="form__phone form__toggler_action-block">
+					<input type="tel" id="phone" name="telephone" required>
+					<p class="form__example">Например: +7 900 123-45-67</p>
+				</div>	
+				<div class="form__control">
+					<button type="submit" class="btn btn_send">Отправить вопрос</button>
+					<p class="form__cancel">Отменить</p>
+				</div>	
+			</form>
+		</div>
+		<!-- Условия доставки -->
+		<div class="form__shipment-wrapper">
+			<header class="form__header">
+				<h3>Доставка</h3>
+				<i class="form__close close"></i>
+			</header>
+			<div class="shipment-main">
+				<div class="shipment-main__rules">
+					<h4>УСЛОВИЯ ДОСТАВКИ</h4>
+					<p>Некоторые почтовые индексы не обслуживаются курьерской службой ввиду логистической недоступности. Проверьте, есть ли в Вашем регионе постаматы Pick Point или розничные магазины adidas, которые позволят Вам использовать альтернативные способы доставки. Список доступных постаматов и магазинов adidas, в которые доступна доставка товаров.</p>
+				</div>
+				<div class="shipment-main__rules">
+					<h4>ДОСТАВКА КУРЬЕРСКОЙ СЛУЖБОЙ</h4>
+					<p>Доставка на дом курьером стала еще удобнее: теперь доступны опции примерки товаров и частичного выкупа.<br>Вы можете в комфортной обстановке примерить заказанные товары и выкупить только то, что Вам подошло.<br>Доставка осуществляется в будние дни с 09.00 до 18.00. По Москве доставка также возможна в выходные дни с&nbsp;09.00&nbsp;до&nbsp;18.00, по Московской области и Санкт-Петербургу - в субботу с 09.00 до 18.00.</p>
+					<p>После отгрузки заказа со склада наша Курьерская служба свяжется с Вами для уточнения деталей доставки.<br>Вы можете примерить вещи до оплаты заказа, и полностью или частично отказаться от заказанного товара.<br>Просим отнестись с пониманием, что время примерки ограничено и составляет 15 минут на заказ.</p>
+				</div>
+			</div>
+		</div>
+		<!-- Форма заказа -->
+		<div class="form__wrapper form__order-wrapper">
+			<header class="form__header">
+				<h3>Форма заказа</h3>
+				<i class="form__close"></i>
+			</header>
+			<div class="order__product-wrapper">
+				<figure class="order-product">
+					<div class="order-img-wrapper">
+						<img src="img/buy-3-mini.png" alt="" class="edition__img">
+					</div>
+					<figcaption class="order-info-wrapper">
+						<p class="edition__info"><span class="limited">Limite Edition.</span> Печатная цветная-версия книги в твердой цветной обложке с ляссе + артбук + постер</p>
+						<p class="edition__price">2 499 <span class="currency">P</span></p>
+					</figcaption>
+				</figure>
+			</div>
+			<form action="mail.php" method="POST" class="form">
+				<label for="name" class="form__label">Представьтесь</label>
+				<input type="text" id="name" name="fio">
+				<label for="email" class="form__label">Адрес электронной почты</label>
+				<input type="email" id="email" name="email" required>
+				<p class="form__example">Например: Укажите информацию по доставке</p>
+				<label for="phone" class="form__label form__toggler"><span class="form__label_text-style">Добавить контактный телефон</span></label>
+				<div class="form__phone form__toggler_action-block">
+					<input type="tel" id="phone" name="telephone" required>
+					<p class="form__example">Например: +7 900 123-45-67</p>
+				</div>
+				<label for="question" class="form__label form__toggler"><span class="form__label_text-style">Добавить комментарий</span></label>
+				<div class="form__phone form__toggler_action-block">
+					<textarea id="question" name="question" class="form__textarea"></textarea>
+				</div>	
+				<div class="form__control">
+					<button type="submit" class="btn btn_send">Отправить заказ</button>
+					<p class="form__cancel">Отменить</p>
+				</div>	
+			</form>
+		</div>
+		<div class="form__wrapper">
+			<header class="form__header">
+				<h3>Спасибо за вопрос</h3>
+				<i class="form__close"></i>
+			</header>
+			<div class="shipment-main">
+				<div class="shipment-main__rules">
+					<p>Ваш вопрос успешно отправлен.<br>Мы обязательно ответим на него в ближайшее время.</p>
+				</div>
+			</div>
+		</div>
+		<div class="form__wrapper">
+			<header class="form__header">
+				<h3>Спасибо за заказ</h3>
+				<i class="form__close"></i>
+			</header>
+			<div class="shipment-main">
+				<div class="shipment-main__rules">
+					<p>Заказ успешно отправлен и мы скоро с Вами свяжемся, чтобы уточнить условия оплаты и доставки.</p>
+					<p>Также для удобства на Вашу почту было отправлено письмо с условиями оплаты и доставки.</p>
+				</div>
+			</div>
+		</div>
+	<header class="header">
+		<div class="center-wrapper">
+			<div class="header__left-side">
+				<div class="header__logo header__valign">
+					<a href="">
+						<img src="img/logo.png" alt="">
+					</a>
+				</div>
+				<nav class="header__nav header__valign">
+					<ul class="nav-list">
+						<li class="nav-list__item" id="blog-link">Блог</li>
+						<li class="nav-list__item" id="shipment-link">Доставка</li>
+						<li class="nav-list__item" id="question-link">Задать вопрос</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="header__right-side">
+				<div class="btn-wrapper header__valign">
+					<button class="header__btn btn btn_order header__valign">Заказать</button>
+				</div>	
+				<div class="header__social header__valign">
+					<a href="" class="social__link fb">Facebook</a>
+					<a href="" class="social__link vk">Vkontakte</a>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="slider-wrapper">
+		<ul class="sliders">
+			<div class="center-wrapper">
+				<li class="slider-list slider" id="slider">
+					<img class="slider-list__img" src="img/bg-0.jpg" alt="" width="100%">
+					<div data-depth="0.10" class="layer l1">
+						<img src="img/bg-1.png" alt="">
+					</div>
+					<div data-depth="0.20" class="layer l2">
+						<img src="img/bg-2.png" alt="">
+					</div>
+					<div data-depth="0.15" class="layer l3">
+						<img src="img/bg-3.png" alt="">
+					</div>
+					<div data-depth="0.50" class="layer l4">
+						<img src="img/bg-book.png" alt="">
+					</div>
+					<div data-depth="0.40" class="layer l5">
+						<img src="img/bg-5.png" alt="">
+					</div>
+					<article class="slider-list__info content_right">	
+						<header>
+							<h2>БАГРОВЫЙ ПЕСОК — ВОЕННО-ИСТОРИЧЕСКАЯ РОЛЕВАЯ ИГРА</h2>
+						</header>
+						<p class="text">Военно-исторический сеттинг «Багровый песок» позволит вам поучаствовать в трагических событиях Aфганской войны на стороне советских воинов-интернационалистов. Вы почувствуете обжигающий жар Афганских равнин и&nbsp;холод высоких гор. Вы будете участвовать в засадах и&nbsp;разведывательных рейдах. Будете проводить конвои через лабиринты коварных дорог, и минировать узкие пространства заснеженных перевалов. Вы вступите в&nbsp;контакт с афганским населением и узнаете, кто&nbsp;в&nbsp;действительности воевал на стороне моджахедов.</p>
+						<button class="slider__btn btn">Заказать</button>
+					</article>
+				</li>
+			</div>	
+		</ul>
+		<div class="slider__arrow slider__arrow_left"></div>
+		<div class="slider__arrow slider__arrow_right"></div>
+		<div class="slider__social clearfix">
+			<div class="social-wrapper">
+				<a href="" class="social__btn btn__fb">Мне нравится</a>
+			</div>
+			<div class="social-wrapper">
+				<a href="" class="social__btn btn__vk">Мне нравится</a>
+			</div>
+		</div>
+	</div>
+	<main class="content">
+		<section class="row-1">
+			<div class="center-wrapper">
+				<div class="row-1-wrapper clearfix">
+					<article class="row-1__info content_left">
+						<header>
+							<img src="img/photo.png" alt="" class="row-1__photo">
+							<h3 class="row-1__header">Багровый Песок — военно-историческая ролевая игра</h3>
+						</header>
+						<div class="text-wrapper">
+							<p>Военно-исторический сеттинг «Багровый песок» позволит вам&nbsp;поучаствовать в трагических событиях Aфганской войны на&nbsp;стороне советских воинов-интернационалистов. Вы&nbsp;почувствуете обжигающий жар Афганских равнин и холод высоких гор. Вы будете участвовать в засадах и&nbsp;разведывательных рейдах. Будете проводить конвои<br>через лабиринты коварных дорог, и минировать узкие пространства заснеженных перевалов. Вы вступите<br>в контакт с афганским населением и узнаете, кто&nbsp;в&nbsp;действительности воевал на стороне моджахедов.</p>
+						</div>	
+					</article>
+					<div class="preview-wrapper content_right">
+						<img src="img/preview.png" alt="" class="preview">
+						<i class="play"></i>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="row-2 row-high">
+			<div class="center-wrapper">
+				<div class="row-2-wrapper row-high_bg clearfix">
+					<article class="content_right">
+						<header>
+							<h3>Разворот с военно-историческими событиями</h3>
+						</header>
+						<div class="text-wrapper">
+							<p>Военно-исторический сеттинг «Багровый песок» позволит вам поучаствовать в трагических событиях Aфганской войны на стороне советских воинов-интернационалистов. Вы&nbsp;почувствуете обжигающий жар Афганских равнин и&nbsp;холод высоких гор. Вы будете участвовать в засадах и&nbsp;разведывательных рейдах. Будете проводить конвои через лабиринты коварных дорог, и минировать узкие пространства заснеженных перевалов.<br>Вы вступите в&nbsp;контакт с афганским населением<br>и&nbsp;узнаете, кто&nbsp;в&nbsp;действительности<br>воевал на&nbsp;стороне моджахедов.</p>
+						</div>	
+					</article>
+				</div>	
+			</div>
+		</section>
+		<section class="row-3 row-high">
+			<div class="center-wrapper">
+				<div class="row-3-wrapper row-high_bg clearfix">
+					<article class="content_left">
+						<header>
+							<h3>Разворот с персонажами (военной техникой) книги</h3>
+						</header>
+						<div class="text-wrapper">
+							<p>Военно-исторический сеттинг «Багровый песок» позволит вам поучаствовать в трагических событиях Aфганской войны на стороне советских воинов-интернационалистов. Вы почувствуете обжигающий жар Афганских равнин и холод высоких гор. Вы будете участвовать в засадах и разведывательных рейдах. Будете проводить конвои через лабиринты коварных дорог, и минировать узкие пространства заснеженных перевалов. Вы вступите в контакт с афганским населением и узнаете, кто в действительности воевал на стороне моджахедов.
+							<p class="text">Военно-исторический сеттинг «Багровый песок» позволит вам поучаствовать в трагических событиях Aфганской войны на стороне советских воинов-интернационалистов.</p>
+							<p class="text">Вы почувствуете обжигающий жар Афганских равнин и холод высоких гор. Вы будете участвовать в засадах и разведывательных рейдах. Будете проводить конвои через лабиринты коварных дорог, и минировать узкие пространства заснеженных перевалов. Вы вступите в контакт с афганским населением и узнаете, кто в действительности воевал на стороне моджахедов.</p>
+						</div>	
+					</article>
+				</div>	
+			</div>
+		</section>
+		<section class="row-4 row-high">
+			<div class="center-wrapper">
+				<div class="row-4-wrapper row-high_bg clearfix">
+					<article class="content_right">
+						<header>
+							<h3>Разворот с чем-то ещё...</h3>
+						</header>
+						<div class="text-wrapper">
+							<p>Военно-исторический сеттинг «Багровый песок» позволит вам поучаствовать в трагических событиях Aфганской войны на стороне советских воинов-интернационалистов. Вы почувствуете обжигающий жар Афганских равнин и холод высоких гор. Вы будете участвовать в засадах и разведывательных рейдах. Будете проводить конвои через лабиринты коварных дорог, и минировать узкие пространства заснеженных перевалов. Вы вступите в контакт с афганским населением и узнаете, кто в действительности воевал на стороне моджахедов.
+							<p class="text">Военно-исторический сеттинг «Багровый песок» позволит вам поучаствовать в трагических событиях Aфганской войны на стороне советских воинов-интернационалистов.</p>
+						</div>	
+					</article>
+				</div>	
+			</div>
+		</section>
+		<div class="row-5"></div>
+		<section class="row-6" id="shop">
+			<header>
+				<h1>Варианты покупки</h1>
+			</header>
+			<div class="center-wrapper">
+				<div class="purchase-wrapper clearfix">
+					<figure class="edition">
+						<div class="edition-img-wrapper">
+							<img src="img/buy-1.png" alt="" class="edition__img">
+						</div>	
+						<figcaption class="edition-info-wrapper edition-info-wrapper__left">
+							<p class="edition__info">Печатная чб-версия книги в мягкой цветной обложке</p>
+							<p class="edition__price">649 <span class="currency">P</span></p>
+							<button class="edition__btn btn btn_order order-link">Заказать</button>
+						</figcaption>
+					</figure>
+					<figure class="edition">
+						<div class="edition-img-wrapper">
+							<img src="img/buy-2.png" alt="" class="edition__img">
+						</div>
+						<figcaption class="edition-info-wrapper">
+							<p class="edition__info">Печатная чб-версия книги в мягкой цветной обложке + артбук + постер</p>
+							<p class="edition__price">1 399 <span class="currency">P</span></p>
+							<button class="edition__btn btn btn_order order-link">Заказать</button>
+						</figcaption>
+					</figure>
+					<figure class="edition">
+						<div class="edition-img-wrapper">
+							<img src="img/buy-3.png" alt="" class="edition__img">
+						</div>
+						<figcaption class="edition-info-wrapper">
+							<p class="edition__info"><span class="limited">Limited Edition.</span> Печатная цветная-версия книги в твердой цветной обложке с ляссе + артбук + постер</p>
+							<p class="edition__price">2 499 <span class="currency">P</span></p>
+							<button class="edition__btn btn btn_order order-link">Заказать</button>
+						</figcaption>
+					</figure>
+				</div>	
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<div class="center-wrapper">
+			<div class="footer__social clearfix">
+				<div class="social-wrapper">
+					<a href="" class="social__btn btn__fb">Мне нравится</a>
+				</div>
+				<div class="social-wrapper">
+					<a href="" class="social__btn btn__vk">Мне нравится</a>
+				</div>
+			</div>
+			<p class="footer__rights">© «Багровый песок», 2017 г.</p>
+		</div>
+	</footer>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			var ge = function (elName) {
+				return document.getElementById(elName)
+			};
+
+			var Slide = {};
+			Slide.s_1 = new Parallax(ge("slider"));
+			Slide.s_1.enable();
+		});
+	</script>
+</body>
+</html>
