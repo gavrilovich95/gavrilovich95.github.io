@@ -687,7 +687,6 @@ input, .form__textarea {
 /* Форма заказа */
 
 .form__order-wrapper {
-	height: 671px;
 	position: fixed;
 	top: 60px;
 	overflow: scroll;
@@ -726,10 +725,9 @@ input, .form__textarea {
 	line-height: 24px;
 }
 
-.form__toggler__action-block {
+.form__toggler_action-block {
 	display: none;
 }
-
 
 
 .slider {

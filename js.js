@@ -18,10 +18,7 @@ $(function () {
 	
 	$( ".overlay, .form__close, .form__cancel" ).click(function(e) {
 		e.preventDefault();
-		$( ".overlay" ).fadeOut();
-		$( ".form__shipment-wrapper" ).fadeOut();
-		$( ".form__question-wrapper" ).fadeOut();
-		$( ".form__order-wrapper" ).fadeOut();
+		$( ".overlay, .form__shipment-wrapper, .form__question-wrapper, .form__order-wrapper" ).fadeOut();
 	});
 
 
