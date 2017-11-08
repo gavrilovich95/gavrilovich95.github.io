@@ -6,9 +6,9 @@
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="fonts.css">
-	<script src="jquery-3.2.1.js"></script>
-	<script src="js.js"></script>
-	<script src="parallax.min.js"></script>
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/js.js"></script>
+	<script src="js/parallax.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="jquery.parallax.css" />
 </head>
 <body>
@@ -19,12 +19,14 @@
 				<h3>Задать вопрос</h3>
 				<i class="form__close"></i>
 			</header>
-			<form action="mail.php" method="POST" class="form">
-				<label for="name" class="form__label">Представьтесь</label>
-				<input type="text" id="name" name="fio">
-				<label for="email" class="form__label">Адрес электронной почты</label>
+			<form class="form" id="question-form">
+				<label for="name" class="form__label form__label-name">Представьтесь<span class="error-box"></span></label>
+				<input type="text" id="name" name="fio" required>
+				<div class="error-box__info"></div>
+				<label for="email" class="form__label form__label-email">Адрес электронной почты<span class="error-box"></span></label>
 				<input type="email" id="email" name="email" required>
-				<label for="question" class="form__label">Вопрос авторам книги</label>
+				<div class="error-box__info"></div>
+				<label for="question" class="form__label form__label-question">Вопрос авторам книги<span class="error-box"></span></label>
 				<textarea id="question" name="question" class="form__textarea"></textarea>
 				<p class="form__example">Например: Укажите информацию по доставке</p>
 				<label for="phone" class="form__label form__toggler"><span class="form__label_text-style">Добавить контактный телефон</span></label>
@@ -305,7 +307,7 @@
 		</div>
 	</footer>
 	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
+		$(document).ready(function ($) {
 			var ge = function (elName) {
 				return document.getElementById(elName)
 			};
@@ -315,5 +317,140 @@
 			Slide.s_1.enable();
 		});
 	</script>
+	
+	<script type="text/javascript">
+
+      $(document).ready(function(){
+
+         // Устанавливаем обработчик потери фокуса для всех полей ввода текста
+         $('input#name, input#email, textarea#question').unbind().blur( function(){
+             
+             var id = $(this).attr('id');
+             var val = $(this).val();
+
+           switch(id)
+           {
+
+                 // Проверка поля "Имя"
+                 case 'name':
+                    var rv_name = /^[a-zA-Zа-яА-Я]+$/; // используем регулярное выражение
+
+                    if(val.length > 2 && val != '' && rv_name.test(val))
+                    {
+                       $(this).removeClass('error').addClass('not_error');
+                       $('.form__label-name .error-box').text('')
+                       $(this).next('.error-box__info').text('')
+                    }
+
+                  // Иначе, мы удаляем класс not-error, и заменяем его на класс error, говоря о том что поле содержит ошибку валидации,
+                  // и ниже в наш контейнер выводим сообщение об ошибке и параметры для верной валидации
+
+                    else
+                    {
+                       $(this).removeClass('not_error').addClass('error');
+                       $('.form__label-name .error-box').text('— Заполните поле')
+                                      .animate({'paddingLeft':'10px'},400)
+                                      .animate({'paddingLeft':'5px'},400);
+                       $(this).next('.error-box__info').html('– длина имени должна составлять не менее 2 символов,<br> – поле должно содержать только русские или латинские буквы')
+                                      .css('padding-top','5px')
+                                      .animate({'opacity':'0.6'},400)
+                                      .animate({'opacity':'1'},400);
+                    }
+                break;
+
+
+               // Проверка email
+               case 'email':
+                   var rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+                   if(val != '' && rv_email.test(val))
+                   {
+                      $(this).removeClass('error').addClass('not_error');
+                      $('.form__label-email .error-box').text('')
+                      $(this).next('.error-box__info').text('')
+                   }
+                   else
+                   {
+                      $(this).removeClass('not_error').addClass('error');
+                      $('.form__label-email .error-box').text('— Заполните поле')
+                                      .animate({'paddingLeft':'10px'},400)
+                                      .animate({'paddingLeft':'5px'},400);
+                      $(this).next('.error-box__info').html('– поле должно содержать правильный email-адрес (например: user123@mail.ru)')
+                                      .css('padding-top','5px')
+                                      .animate({'opacity':'0.6'},400)
+                                      .animate({'opacity':'1'},400);
+                   }
+               break;
+
+
+              // Проверка поля "Сообщение"
+              case 'question':
+                  if(val != '' && val.length < 5000)
+                  {
+                     $(this).removeClass('error').addClass('not_error');
+                     $('.form__label-question .error-box').text('')
+                     $(this).next('.error-box__info').text('')
+                  }
+                  else
+                  {
+                     $(this).removeClass('not_error').addClass('error');
+                     $('.form__label-question .error-box').text('— Заполните поле')
+                                      .animate({'paddingLeft':'10px'},400)
+                                      .animate({'paddingLeft':'5px'},400);
+                  }
+              break;
+
+
+           } // end switch(...)
+
+         }); // end blur()
+
+        
+         // Теперь отправим наше письмо с помощью AJAX
+         $('form#question-form').submit(function(e){
+
+             // Запрещаем стандартное поведение для кнопки submit
+             e.preventDefault();
+
+             // После того, как мы нажали кнопку "Отправить", делаем проверку,
+             // если кол-во полей с классов .not_error равно 3(так как у нас всего 3 поля), то есть все поля заполнены верно,
+             // выполняем наш Ajax сценарий и отправляем письмо адресату
+
+             if($('.not_error').length == 3)
+             {  
+
+                // Eще одним моментов является то, что в качестве указания данных для передачи обработчику send.php, мы обращаемся $(this) к нашей форме,
+                // и вызываем метод .serialize().
+                // Это очень удобно, т.к. он сразу возвращает сгенерированную строку с именами и значениями выбранных элементов формы.
+
+                 $.ajax({
+                        url: 'send.php',
+                        type: 'post',
+                        data: $(this).serialize(),
+
+                        beforeSend: function(xhr, textStatus){ 
+                             $('form#question-form :input').attr('disabled','disabled');
+                        },
+
+                        success: function(response){
+                            $('form#question-form :input').removeAttr('disabled');
+                            $('form#question-form :text, textarea').val('').removeClass().next('.error-box').text('');
+                            alert(response);
+                       }
+                }); // end ajax({...})
+            }
+            else
+            {
+              return false;
+            }
+            // Иначе, если количество полей с данным классом не равно значению 3 мы возвращаем false,
+            // останавливая отправку сообщения в невалидной форме
+           
+
+       }); // end submit()
+
+
+      }); // end script
+
+    </script>
 </body>
 </html>

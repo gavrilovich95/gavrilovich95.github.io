@@ -1,29 +1,18 @@
-<?php
+ ​<?php
 
-$fio = $_POST['fio'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-$phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $message = $_POST['question'];
 
-$fio = htmlspecialchars($fio);
-$email = htmlspecialchars($email);
-$message = htmlspecialchars($message);
-$phone = htmlspecialchars($phone);
+    $to = "gavrilovich95@gmail.ru";
+    $subject = "От поситителя сайта";
+    $text =  "Написал(а): $name\n Контактный email - $email\n\n Текст письма: $question\n";
 
-$fio = urldecode($fio);
-$email = urldecode($email);
-$message = urldecode($message);
-$phone = urldecode($phone);
+    $header = "Content-type: text/html; charset=utf-8\r\n";
+    $header .= "MIME-Version: 1.0\r\n";
+    
+    $sending = mail($to, $subject, $text, $headers);
 
-$fio = trim($fio);
-$email = trim($email);
-$message = trim($message);
-$phone = trim($phone);
-
-if (mail("gavrilovich95@gmail.com", "Заявка с сайта", "ФИО:".$fio. "Сообщение: ".$message. "Телефон:".$phone. "From:".$email.)
- {     echo "сообщение успешно отправлено"; 
-} else { 
-    echo "при отправке сообщения возникли ошибки";
-}
+    if($sending) echo "Письмо отправлено.";
 
 ?>

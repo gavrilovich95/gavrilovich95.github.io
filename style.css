@@ -811,3 +811,22 @@ input, .form__textarea {
 	left: -340px;
 	top: -50px;
 }
+
+.error-box {
+	font-family: 'DINPro Medium';
+	font-size: 14px;
+	color: #c12b2e;
+}
+
+.error-box__info {
+	font-family: 'DINPro Regular';
+	font-size: 14px;
+	color: #c12b2e;
+	opacity: 0;
+}
+
+.error {
+	background: #fff5f5;
+	border-color: #bc040a;
+}
+
